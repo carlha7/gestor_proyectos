@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi Perfil - Gestor de Proyectos{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-person-circle"></i> Mi Perfil</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow mb-4">
+            <div class="card-body text-center">
+                <div class="mb-3">
+                    <i class="bi bi-person-circle" style="font-size: 4rem; color: #0d6efd;"></i>
+                </div>
+                <h4>{{ user.get_full_name|default:user.username }}</h4>
+                <p class="text-muted">{{ user.email }}</p>
+                <p><small>Usuario desde: {{ user.date_joined|date:"d M Y" }}</small></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card text-white bg-primary">
+                    <div class="card-body text-center">
+                        <h5><i class="bi bi-folder"></i> Proyectos</h5>
+                        <h2>{{ proyectos_count }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card text-white bg-info">
+                    <div class="card-body text-center">
+                        <h5><i class="bi bi-list-task"></i> Total Tareas</h5>
+                        <h2>{{ tareas_count }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card text-white bg-warning">
+                    <div class="card-body text-center">
+                        <h5><i class="bi bi-clock"></i> Tareas Pendientes</h5>
+                        <h2>{{ tareas_pendientes }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card text-white bg-success">
+                    <div class="card-body text-center">
+                        <h5><i class="bi bi-check-circle"></i> Tareas Completadas</h5>
+                        <h2>{{ tareas_completadas }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Gestor de Proyectos{% endblock %}
+
+{% block content %}
+<h1 class="mb-4"><i class="bi bi-speedometer2"></i> Dashboard</h1>
+
+<!-- Estadísticas -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="bi bi-folder"></i> Proyectos</h5>
+                <h2>{{ total_proyectos }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="bi bi-clock"></i> Pendientes</h5>
+                <h2>{{ tareas_pendientes }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="bi bi-arrow-repeat"></i> En Progreso</h5>
+                <h2>{{ tareas_en_progreso }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="bi bi-check-circle"></i> Completadas</h5>
+                <h2>{{ tareas_completadas }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lista de proyectos -->
+<h2 class="mb-3"><i class="bi bi-folder"></i> Mis Proyectos</h2>
+{% if proyectos %}
+<div class="row">
+    {% for proyecto in proyectos %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ proyecto.nombre }}</h5>
+                <p class="card-text">{{ proyecto.descripcion|truncatewords:20 }}</p>
+                <p class="text-muted"><small>Creado: {{ proyecto.fecha_creacion|date:"d M Y" }}</small></p>
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{% url 'tareas:proyecto_detail' proyecto.pk %}" class="btn btn-primary btn-sm">
+                    <i class="bi bi-eye"></i> Ver
+                </a>
+                <a href="{% url 'tareas:proyecto_update' proyecto.pk %}" class="btn btn-warning btn-sm">
+                    <i class="bi bi-pencil"></i> Editar
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> Aún no tienes proyectos.
+    <a href="{% url 'tareas:proyecto_create' %}">Crea tu primer proyecto</a>
+</div>
+{% endif %}
+{% endblock %}

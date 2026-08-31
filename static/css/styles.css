@@ -1,0 +1,132 @@
+/* Estilos personalizados - Gestor de Proyectos */
+
+:root {
+    --color-primario: #4f46e5;
+    --color-primario-oscuro: #3730a3;
+    --color-fondo: #f8fafc;
+    --color-texto: #1e293b;
+    --color-exito: #10b981;
+    --color-peligro: #ef4444;
+    --color-advertencia: #f59e0b;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    background-color: var(--color-primario);
+    color: white;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primario-oscuro);
+    border-color: var(--color-primario-oscuro);
+}
+
+.btn-danger {
+    background-color: var(--color-peligro);
+    border-color: var(--color-peligro);
+}
+
+.badge-pendiente {
+    background-color: var(--color-advertencia);
+    color: white;
+}
+
+.badge-en-progreso {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+.badge-completada {
+    background-color: var(--color-exito);
+    color: white;
+}
+
+.badge-alta {
+    background-color: var(--color-peligro);
+    color: white;
+}
+
+.badge-media {
+    background-color: var(--color-advertencia);
+    color: white;
+}
+
+.badge-baja {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+.form-control:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
+
+.invalid-feedback {
+    color: var(--color-peligro);
+    font-size: 0.875rem;
+}
+
+.auth-container {
+    max-width: 450px;
+    margin: 3rem auto;
+}
+
+.auth-container .card {
+    border-radius: 12px;
+}
+
+.alert {
+    border-radius: 8px;
+}
+
+.delete-container {
+    max-width: 500px;
+    margin: 3rem auto;
+}
+
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background-color: #f1f5f9;
+    border-top: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .auth-container {
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+    }
+}
